@@ -1,0 +1,116 @@
+#include<iostream>
+using namespace std;
+#define MAX 100
+class Stack{
+public:
+    int arr[MAX];
+    int top;
+    Stack(){
+        top = -1;
+    }
+    bool isFull()
+    {
+        return top == MAX - 1;
+    }
+    bool isEmpty()
+    {
+        return top == - 1;
+    }
+    void peek()
+    {
+        if(isEmpty()){
+            cout<< "Stack is Empty!"<<endl;
+        }
+        else{
+            int topElement = arr[top];
+            cout<< "Top Element : "<<topElement<<endl;
+        }
+    }
+    void push(int value){
+        if(isFull()){
+            cout<< "Stack is Overflow!"<<endl;
+        }
+        else{
+            top++;
+            arr[top] = value;
+            cout<<value<< " is Inserted "<<endl;
+        }
+    }
+    void pop()
+    {
+        if(isEmpty()){
+            cout<< "Stack is Underflow!"<<endl;
+        }
+        else{
+            int temp = arr[top];
+            top--;
+            cout<<temp<<" is Deleted "<<endl;
+        }
+    }
+    void display()
+    {
+        if(isEmpty())
+        {
+            cout << "Stack is Empty!" << endl;
+        }
+        else
+        {
+            cout << "Stack Elements: ";
+
+            for(int i = top; i >= 0; i--)
+            {
+                cout << arr[i] << " ";
+            }
+
+            cout << endl;
+        }
+    }
+};
+int main()
+{
+     Stack s;
+     int choice, value;
+
+    do
+    {
+        cout << " ~~ STACK MENU ~~ \n";
+        cout << "1. Push\n";
+        cout << "2. Pop\n";
+        cout << "3. Peek\n";
+        cout << "4. Display\n";
+        cout << "5. Exit\n";
+        cout << "Enter Your Choice: ";
+        cin >> choice;
+
+        switch(choice)
+        {
+        case 1:
+            cout << "Enter Value: ";
+            cin >> value;
+            s.push(value);
+            break;
+
+        case 2:
+            s.pop();
+            break;
+
+        case 3:
+            s.peek();
+            break;
+
+        case 4:
+            s.display();
+            break;
+
+        case 5:
+            cout << "Program Exited Successfully." << endl;
+            break;
+
+        //default:
+            //cout << "Invalid Choice!" << endl;
+        }
+
+    }
+    while(choice != 5);
+
+}
